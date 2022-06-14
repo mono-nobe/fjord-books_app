@@ -30,4 +30,13 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  Books: "Books"
+  Title: "Title"
+  Memo: "Memo"
+  Author: "Author"
+  Picture: "Picture"
+  Show: "Show"
+  Edit: "Edit"
+  Destroy: "Destroy"
+  New Book: "New Book"
+  Are you sure?: "Are you sure?"
