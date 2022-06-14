@@ -30,13 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  Are you sure?: "Are you sure?"
+  Author: "Author"
+  Back: "Back"
   Books: "Books"
+  Destroy: "Destroy"
+  Edit: "Edit"
   Title: "Title"
   Memo: "Memo"
-  Author: "Author"
+  New Book: "New Book"
   Picture: "Picture"
   Show: "Show"
-  Edit: "Edit"
-  Destroy: "Destroy"
-  New Book: "New Book"
-  Are you sure?: "Are you sure?"
