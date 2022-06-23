@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters_to_sign_up, if: :devise_controller?
   before_action :configure_permitted_parameters_to_update_account, if: :devise_controller?
 
+  def after_sign_up_path_for(resource)
+    books_path
+  end
+
+  def after_sign_in_path_for(resource)
+    books_path
+  end
+
   def after_sign_out_path_for(resource)
     new_user_session_path
   end
