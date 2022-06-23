@@ -223,10 +223,8 @@ ja:
       next: '次'
       truncate: '...'
     authentication:
-      login: ログイン
       logged_in_as: "%{email}でログインしています。"
       logout: ログアウト
-      sign_up: 新規登録
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
