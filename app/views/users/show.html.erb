@@ -1,16 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= Book.human_attribute_name(:title) %>:</strong>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:post_code) %>:</strong>
   <%= @user.post_code %>
 </p>
 
 <p>
-  <strong><%= Book.human_attribute_name(:title) %>:</strong>
+  <strong><%= User.human_attribute_name(:address) %>:</strong>
   <%= @user.address %>
 </p>
 
 <p>
-  <strong><%= Book.human_attribute_name(:title) %>:</strong>
+  <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
   <%= @user.self_introduction %>
+</p>
+
+<p>
+  <%= link_to t('views.common.back'), :back %>
 </p>
