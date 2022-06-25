@@ -3,3 +3,11 @@
     <li><%= link_to user.email, user_path(user.id) %></li>
   <% end %>
 </ul>
+
+<p>
+  <%= paginate @users %>
+</p>
+
+<p>
+  <%= link_to t('views.common.back'), :back %>
+</p>
