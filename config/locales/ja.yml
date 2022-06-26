@@ -205,3 +205,17 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  common:
+    button:
+      new: 作成
+      show: 詳細
+      edit: 編集
+      destroy: 削除
+      back: 戻る
+    text:
+      delete_confirm: "%{name}を削除してもよろしいですか？"
+      title_new: "%{name}の新規作成"
+      title_edit: "%{name}の編集"
+      notice_create: "%{name}が作成されました。"
+      notice_update: "%{name}が更新されました。"
+      notice_destroy: "%{name}が削除されました。"
