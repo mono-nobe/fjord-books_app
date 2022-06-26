@@ -211,6 +211,7 @@ ja:
       show: 詳細
       edit: 編集
       destroy: 削除
+      submit: "決定"
       back: 戻る
     text:
       delete_confirm: "%{name}を削除してもよろしいですか？"
