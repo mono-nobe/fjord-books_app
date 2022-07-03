@@ -9,11 +9,11 @@
 </p>
 
 <p>
-  フォロー数：<%= current_user.email %>
+  フォロー数：<%= @user.following.count %>
 </p>
 
 <p>
-  フォロワー数：
+  フォロワー数：<%= @user.followers.count %>
 </p>
 
 <p>
