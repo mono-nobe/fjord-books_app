@@ -1,11 +1,11 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <p>
-  <%= button_to 'フォローする', { controller: 'follows', action: 'create' }, { method: :post, params: { current_user: current_user.email } } %>
+  <%= button_to 'フォローする', { controller: 'follows', action: 'create' }, { method: :post, params: { followed_user_id: @user.id } } %>
 </p>
 
 <p>
-  <%= button_to 'フォロー解除する' %>
+  <%= button_to 'フォロー解除する', { controller: 'follows', action: 'destroy' }, { method: :delete } %>
 </p>
 
 <p>
