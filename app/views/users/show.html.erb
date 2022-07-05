@@ -3,19 +3,19 @@
 <% if current_user != @user %>
   <p>
     <% if current_user.following?(@user) %>
-      <%= button_to 'フォロー解除する', { controller: 'follows', action: 'destroy' }, { method: :delete } %>
+      <%= button_to t('views.follow.unfollow'), { controller: 'follows', action: 'destroy' }, { method: :delete } %>
     <% else %>
-      <%= button_to 'フォローする', { controller: 'follows', action: 'create' }, { method: :post, params: { followed_user_id: @user.id } } %>
+      <%= button_to t('views.follow.follow'), { controller: 'follows', action: 'create' }, { method: :post, params: { followed_user_id: @user.id } } %>
     <% end %>
   </p>
 <% end %>
 
 <p>
-  フォロー数：<%= @user.following.count %>
+  <%= link_to t('views.follow.following_count'), user_following_index_path(user_id: @user.id) %> : <%= @user.following.count %>
 </p>
 
 <p>
-  フォロワー数：<%= @user.followers.count %>
+  <%= link_to t('views.follow.followers_count'), user_followers_path(user_id: @user.id) %> : <%= @user.followers.count %>
 </p>
 
 <p>
