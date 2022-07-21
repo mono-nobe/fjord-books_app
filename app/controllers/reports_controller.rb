@@ -3,7 +3,9 @@ class ReportsController < ApplicationController
 
   # GET /reports or /reports.json
   def index
-    @reports = Report.all
+    user = User.find(params[:user_id])
+    @reports = user.reports
+    @target_user = user
   end
 
   # GET /reports/1 or /reports/1.json
@@ -21,7 +23,7 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
-    @report = Report.new(report_params)
+    @report = current_user.reports.build(report_params)
 
     respond_to do |format|
       if @report.save
@@ -52,7 +54,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
+      format.html { redirect_to user_reports_path(current_user), notice: "Report was successfully destroyed." }
       format.json { head :no_content }
     end
   end
