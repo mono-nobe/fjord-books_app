@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = @commentable.comments.build(comment_params)
+    @comment = @commentable.comments.build(body: comment_params['body'], user_id: current_user.id)
 
     respond_to do |format|
       if @comment.save
