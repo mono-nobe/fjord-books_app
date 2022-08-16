@@ -1,22 +1,24 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
 <p>
-  <strong>Title:</strong>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
   <%= @report.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
   <%= @report.body %>
 </p>
 
-<h1>日報のコメント</h1>
+<h1><%= t('comments.show.title', commentable: Report.model_name.human) %></h1>
 <%= render 'comments/form', commentable: @report, comment: @report.comments.build %>
 
 <table>
   <thead>
     <tr>
-      <th>内容</th>
-      <th>ユーザー名</th>
-      <th>投稿日時</th>
+      <th><%= t('comments.show.table_column_body') %></th>
+      <th><%= t('comments.show.table_column_user_name') %></th>
+      <th><%= t('comments.show.table_column_posted_at') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>

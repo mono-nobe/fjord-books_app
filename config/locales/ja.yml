@@ -240,6 +240,12 @@ ja:
     followers:
       index:
         title: フォロワー
+  comments:
+    show:
+      title: "%{commentable}のコメント"
+      table_column_body: 内容
+      table_column_user_name: ユーザー名
+      table_column_posted_at: 投稿日時
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
