@@ -1,5 +1,6 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
+class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(body: comment_params['body'], user_id: current_user.id)
 
@@ -7,7 +8,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @commentable.is_a?(Book) ? book_path(@commentable) : report_path(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
         format.json { render :show, status: :created, location: @comment }
-      else 
+      else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
@@ -15,8 +16,9 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end
