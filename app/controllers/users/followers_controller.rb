@@ -2,6 +2,6 @@
 
 class Users::FollowersController < ApplicationController
   def index
-    @followers = User.find(params[:user_id]).followers.order(:id).page(params[:page]).per(10)
+    @followers = User.find(params[:user_id]).followers.with_attached_avatar.order(:id).page(params[:page]).per(10)
   end
 end
