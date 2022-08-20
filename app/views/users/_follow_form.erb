@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:postal_code) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% followables.each do |followable| %>
+      <tr>
+        <th>
+          <% if followable.avatar.attached? %>
+            <%= image_tag followable.avatar, :size => '50x50' %>
+          <% end %>
+        </th>
+        <td><%= followable.email %></td>
+        <td><%= followable.name %></td>
+        <td><%= followable.postal_code %></td>
+        <td><%= followable.address %></td>
+        <td><%= link_to t('views.common.show'), followable %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate followables %>
