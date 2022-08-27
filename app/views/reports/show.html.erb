@@ -27,8 +27,8 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.body %></td>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.created_at %></td>
+        <td><%= comment.user.name == "" ? comment.user.email : comment.user.name %></td>
+        <td><%= comment.created_at.strftime(t('time.formats.long')) %></td>
       </tr>
     <% end %>
   </tbody>

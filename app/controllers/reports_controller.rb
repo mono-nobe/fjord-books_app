@@ -5,9 +5,8 @@ class ReportsController < ApplicationController
 
   # GET /reports or /reports.json
   def index
-    user = User.find(params[:user_id])
-    @reports = user.reports
-    @target_user = user
+    @target_user = User.find(params[:user_id])
+    @reports = Report.includes(:user).order(:id).page(params[:page]).per(10)
   end
 
   # GET /reports/1 or /reports/1.json
@@ -22,7 +21,10 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit; end
+  def edit
+    @report = Report.find(params[:id])
+    return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
+  end
 
   # POST /reports or /reports.json
   def create
@@ -41,6 +43,8 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
+    return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
+
     respond_to do |format|
       if @report.update(report_params)
         format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
@@ -54,6 +58,8 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
+    return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
+
     @report.destroy
 
     respond_to do |format|

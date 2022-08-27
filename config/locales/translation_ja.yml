@@ -21,6 +21,8 @@ ja:
       report:
         title: タイトル
         body: 内容
+        posted_by: 投稿者
+        posted_at: 投稿日時
       comment:
         title: タイトル
         body: 内容
