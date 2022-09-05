@@ -204,6 +204,7 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      date: "%Y/%m/%d"
     pm: 午後
   views:
     common:
@@ -246,6 +247,9 @@ ja:
       table_column_body: 内容
       table_column_user_name: ユーザー名
       table_column_posted_at: 投稿日時
+  reports:
+    posted:
+      posted_at_date: 投稿日
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

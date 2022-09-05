@@ -10,6 +10,16 @@
   <%= @report.body %>
 </p>
 
+<p>
+  <strong><%= Report.human_attribute_name(:posted_by) %>:</strong>
+  <%= @report.user.name == "" ? @report.user.email : @report.user.name %>
+</p>
+
+<p>
+  <strong><%= t('reports.posted.posted_at_date') %>:</strong>
+  <%= @report.created_at.strftime(t('time.formats.date')) %>
+</p>
+
 <h1><%= t('comments.show.title', commentable: Report.model_name.human) %></h1>
 <%= render 'comments/form', commentable: @report, comment: @report.comments.build %>
 
