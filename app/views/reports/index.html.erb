@@ -32,6 +32,4 @@
 
 <br>
 
-<% if current_user.id == @target_user.id %>
-  <%= link_to t('views.common.new'), new_report_path %>
-<% end %>
+<%= link_to t('views.common.new'), new_report_path %>

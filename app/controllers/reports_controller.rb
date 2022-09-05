@@ -5,7 +5,6 @@ class ReportsController < ApplicationController
 
   # GET /reports or /reports.json
   def index
-    @target_user = User.find(params[:user_id])
     @reports = Report.includes(:user).order(:id).page(params[:page]).per(10)
   end
 
@@ -63,7 +62,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_reports_path(current_user), notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
+      format.html { redirect_to reports_path, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
       format.json { head :no_content }
     end
   end

@@ -13,10 +13,8 @@ Rails.application.routes.draw do
       resources :followings, only: [:index]
       resources :followers, only: [:index]
     end
-    resources :reports, only: %i[index] do
-    end
   end
-  resources :reports, only: %i[new show create edit update destroy] do
+  resources :reports do
     scope module: :reports do
       resources :comments, only: %i[create]
     end
