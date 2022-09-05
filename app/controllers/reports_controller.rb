@@ -22,7 +22,7 @@ class ReportsController < ApplicationController
   # GET /reports/1/edit
   def edit
     @report = Report.find(params[:id])
-    return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
+    render html: helpers.tag.strong('Not Found') unless @report.user.id == current_user.id
   end
 
   # POST /reports or /reports.json
