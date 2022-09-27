@@ -13,17 +13,7 @@
 
   <tbody>
     <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.title %></td>
-        <td><%= report.body %></td>
-        <td><%= report.user.name == "" ? report.user.email : report.user.name %></td>
-        <td><%= report.created_at.strftime(t('time.formats.date')) %></td>
-        <td><%= link_to t('views.common.show'), report %></td>
-        <% if report.user_id == current_user.id %>
-          <td><%= link_to t('views.common.edit'), edit_report_path(report) %></td>
-          <td><%= link_to t('views.common.destroy'), report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
-        <% end %>
-      </tr>
+      <%= render 'detail_record', report: report %>
     <% end %>
   </tbody>
 </table>
