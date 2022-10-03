@@ -2,7 +2,7 @@
 
 class CommentsController < ApplicationController
   def create
-    @comment = @commentable.comments.build(body: comment_params['body'], user_id: current_user.id)
+    @comment = @commentable.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -19,6 +19,6 @@ class CommentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body).merge(user_id: current_user.id)
   end
 end
