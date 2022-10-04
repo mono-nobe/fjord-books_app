@@ -3,12 +3,12 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
 
-  # GET /reports or /reports.json
+  # GET /reports
   def index
     @reports = Report.includes(:user).order(:id).page(params[:page]).per(10)
   end
 
-  # GET /reports/1 or /reports/1.json
+  # GET /reports/1
   def show
     @comments = @report.comments.order(created_at: :desc)
     @report = Report.find(params[:id])
@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
     render html: helpers.tag.strong('Not Found') unless @report.user.id == current_user.id
   end
 
-  # POST /reports or /reports.json
+  # POST /reports
   def create
     @report = current_user.reports.build(report_params)
 
@@ -38,7 +38,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /reports/1 or /reports/1.json
+  # PATCH/PUT /reports/1
   def update
     return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
 
@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  # DELETE /reports/1 or /reports/1.json
+  # DELETE /reports/1
   def destroy
     return render json: { error: '404 error' }, status: :not_found unless @report.user.id == current_user.id
 
