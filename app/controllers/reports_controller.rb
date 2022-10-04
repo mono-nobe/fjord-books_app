@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
-    @comments = @report.comments
+    @comments = @report.comments.order(created_at: :desc)
     @report = Report.find(params[:id])
   end
 
