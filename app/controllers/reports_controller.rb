@@ -21,7 +21,6 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    @report = Report.find(params[:id])
     render html: helpers.tag.strong('Not Found') unless @report.user.id == current_user.id
   end
 
