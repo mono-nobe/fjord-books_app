@@ -1,7 +1,7 @@
 <tr>
   <td><%= report.title %></td>
   <td><%= report.body %></td>
-  <td><%= report.user.blank? ? report.user.email : report.user.name %></td>
+  <td><%= report.user.name.blank? ? report.user.email : report.user.name %></td>
   <td><%= report.created_at.strftime(t('time.formats.date')) %></td>
   <td><%= link_to t('views.common.show'), report %></td>
   <% if report.user_id == current_user.id %>
