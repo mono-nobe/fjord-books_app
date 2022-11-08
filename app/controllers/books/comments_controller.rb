@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
-class Books::CommentsController < CommentsController
+require_relative '../comments/comments_module'
+
+class Books::CommentsController < ApplicationController
+  include Comments
+
   before_action :set_commentable
 
   private
