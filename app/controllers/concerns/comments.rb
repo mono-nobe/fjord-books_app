@@ -22,6 +22,10 @@ module Comments
 
   private
 
+  def set_commentable
+    raise NotImplementedError, 'set_commentable(privateメソッド)を実装する。@commentableにコメント対象のオブジェクトを格納する'
+  end
+
   def comment_params
     params.require(:comment).permit(:body).merge(user_id: current_user.id)
   end
