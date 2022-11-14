@@ -11,7 +11,6 @@ class ReportsController < ApplicationController
   # GET /reports/1
   def show
     @comments = @report.comments.order(created_at: :desc)
-    @report = Report.find(params[:id])
   end
 
   # GET /reports/new
