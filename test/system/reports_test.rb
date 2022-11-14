@@ -3,13 +3,14 @@
 require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
-  include Warden::Test::Helpers
   setup do
     # click_linkの完全一致のみ許可する
     Capybara.exact = true
 
-    @user = users(:alice)
-    login_as(@user, scope: :user)
+    visit root_url
+    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_button 'ログイン'
 
     visit reports_path
   end
