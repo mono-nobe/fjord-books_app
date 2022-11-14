@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../concerns/comments_module'
-
 class Books::CommentsController < ApplicationController
   include Comments
 
