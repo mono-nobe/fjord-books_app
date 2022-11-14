@@ -5,8 +5,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   # following?のテスト
   test 'followfing?_正常系_AliceがBobをフォローしている' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     alice.follow(bob)
 
@@ -14,16 +14,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'followfing?_正常系_AliceがBobをフォローしていない' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     assert_not alice.following?(bob)
   end
 
   # followed_by?のテスト
   test 'followed_by?_正常系_AliceがBobからフォローされている' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     bob.follow(alice)
 
@@ -31,16 +31,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'followed_by?_正常系_AliceがBobからフォローされていない' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     assert_not alice.followed_by?(bob)
   end
 
   # followのテスト
   test 'follow_正常系_AliceがBobをフォローしている' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     first_alice_and_bob_relation = alice.follow(bob)
     second_alice_and_bob_relation = alice.follow(bob)
@@ -49,8 +49,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'follow_正常系_AliceがBobをフォローしていない' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     alice_and_bob_relation = alice.follow(bob)
 
@@ -60,8 +60,8 @@ class UserTest < ActiveSupport::TestCase
 
   # unfollowのテスト
   test 'unfollow_正常系_AliceがBobをフォローしている' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     # AliceがBobをフォローしていることを確認
     alice.follow(bob)
@@ -75,8 +75,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'unfollow_正常系_AliceがBobをフォローしていない' do
-    alice = User.find(1)
-    bob = User.find(2)
+    alice = users(:alice)
+    bob = users(:bob)
 
     assert_not alice.unfollow(bob)
   end
