@@ -27,24 +27,4 @@
 
 <h1><%= t('comments.show.title', commentable: Report.model_name.human) %></h1>
 <%= render 'comments/form', commentable: @report, comment: @report.comments.build %>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= Comment.human_attribute_name(:body) %></th>
-      <th><%= Comment.human_attribute_name(:user_id) %></th>
-      <th><%= Comment.human_attribute_name(:created_at) %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.body %></td>
-        <td><%= comment.user.name.blank? ? comment.user.email : comment.user.name %></td>
-        <td><%= l comment.created_at, format: :long %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'comments/index', comments: @comments %>
