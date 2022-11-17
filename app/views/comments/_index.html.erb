@@ -12,7 +12,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.body %></td>
-        <td><%= render 'shared/posted_by', post_target: comment %></td>
+        <td><%= comment.user.name.blank? ? comment.user.email : comment.user.name %></td>
         <td><%= l comment.created_at, format: :long %></td>
       </tr>
     <% end %>
