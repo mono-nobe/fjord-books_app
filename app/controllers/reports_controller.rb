@@ -20,9 +20,7 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit
-    current_user.reports.find(params[:id])
-  end
+  def edit; end
 
   # POST /reports
   def create
