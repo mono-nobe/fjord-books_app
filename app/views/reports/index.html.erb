@@ -16,7 +16,7 @@
       <tr>
         <td><%= report.title %></td>
         <td><%= report.body %></td>
-        <td><%= report.user.app_name %></td>
+        <td><%= report.user.name_or_email %></td>
         <td><%= l report.created_at, format: :date %></td>
         <td><%= link_to t('views.common.show'), report %></td>
         <% if report.user == current_user %>
