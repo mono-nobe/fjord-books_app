@@ -8,7 +8,7 @@ class ReportsTest < ApplicationSystemTestCase
     Capybara.exact = true
 
     visit root_url
-    fill_in 'Eメール', with: 'alice@example.com'
+    fill_in 'Eメール', with: users(:alice).email
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
 
