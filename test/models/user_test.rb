@@ -8,16 +8,14 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    alice.follow(bob)
-
     assert alice.following?(bob)
   end
 
-  test 'followfing?_正常系_AliceがBobをフォローしていない' do
+  test 'followfing?_正常系_AliceがCharlieをフォローしていない' do
     alice = users(:alice)
-    bob = users(:bob)
+    charlie = users(:charlie)
 
-    assert_not alice.following?(bob)
+    assert_not alice.following?(charlie)
   end
 
   # followed_by?のテスト
@@ -25,16 +23,14 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    bob.follow(alice)
-
     assert alice.followed_by?(bob)
   end
 
-  test 'followed_by?_正常系_AliceがBobからフォローされていない' do
+  test 'followed_by?_正常系_AliceがCharlieからフォローされていない' do
     alice = users(:alice)
-    bob = users(:bob)
+    charlie = users(:charlie)
 
-    assert_not alice.followed_by?(bob)
+    assert_not alice.followed_by?(charlie)
   end
 
   # followのテスト
@@ -42,20 +38,20 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    first_alice_and_bob_relation = alice.follow(bob)
+    first_alice_and_bob_relation = relationships(:alice_follow_bob)
     second_alice_and_bob_relation = alice.follow(bob)
 
     assert_equal first_alice_and_bob_relation, second_alice_and_bob_relation
   end
 
-  test 'follow_正常系_AliceがBobをフォローしていない' do
+  test 'follow_正常系_AliceがCharlieをフォローしていない' do
     alice = users(:alice)
-    bob = users(:bob)
+    charlie = users(:charlie)
 
-    alice_and_bob_relation = alice.follow(bob)
+    alice_and_charlie_relation = alice.follow(charlie)
 
-    assert_equal alice_and_bob_relation.following_id, bob.id
-    assert_equal alice_and_bob_relation.follower_id, alice.id
+    assert_equal alice_and_charlie_relation.following_id, charlie.id
+    assert_equal alice_and_charlie_relation.follower_id, alice.id
   end
 
   # unfollowのテスト
@@ -64,7 +60,6 @@ class UserTest < ActiveSupport::TestCase
     bob = users(:bob)
 
     # AliceがBobをフォローしていることを確認
-    alice.follow(bob)
     assert alice.following?(bob)
 
     alice_and_bob_relation = alice.unfollow(bob)
@@ -74,11 +69,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not Relationship.find_by(id: alice_and_bob_relation.id)
   end
 
-  test 'unfollow_正常系_AliceがBobをフォローしていない' do
+  test 'unfollow_正常系_AliceがCharlieをフォローしていない' do
     alice = users(:alice)
-    bob = users(:bob)
+    charlie = users(:charlie)
 
-    assert_not alice.unfollow(bob)
+    assert_not alice.unfollow(charlie)
   end
 
   # name_or_emailのテスト
