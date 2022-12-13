@@ -1,11 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  title: MyString
-  content: MyText
+alice_report_first:
+  id: 1
+  user_id: 1
+  title: alice_report_first
+  content: this is alice_report_first
+  created_at: <%= DateTime.new(2022, 1, 12, 11, 1, 45) %>
 
-two:
-  user: two
-  title: MyString
-  content: MyText
+alice_report_second:
+  id: 2
+  user_id: 1
+  title: alice_report_second
+  content: this is alice_report_second
+  created_at: <%= DateTime.new(2022, 2, 12, 11, 1, 45) %>
+
+bob_report_first:
+  id: 3
+  user_id: 2
+  title: bob_report_first
+  content: this is bob_report_first
+  created_at: <%= DateTime.new(2022, 3, 12, 11, 1, 45) %>
+
